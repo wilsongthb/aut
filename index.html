@@ -1,0 +1,36 @@
+<pre id="r"></pre>
+<script >
+function cout(frase){
+	var r = document.getElementById("r");
+	//r.innerHTML = "jajaja";
+	r.innerHTML = r.innerHTML + frase + "\n";
+}
+//cout("peru");
+var obj_post_entrada = {
+	entradas: "0;1",
+	estados: "q0,q1,q2,q3",
+	"q0": "q1;q2",
+	"q1": "@;q3",
+	"q2": "@;@",
+	"q3": "@;@"
+};
+arr_estados_nuevos = [];
+function combinaciones(estados){
+	cout("Se han recibido los siguientes estados:  " + estados);
+	arr_estados = estados.split(",");
+	/*
+	for(estado in arr_estados){
+		cout(arr_estados[estado]);
+	}
+	*/
+	arr_return = [];
+	for(var i=0; i < arr_estados.length ; i++){
+		cout("estados: " + String(i+1));
+		for(estado in arr_estados){
+			cout(arr_estados[estado] + " = " + obj_post_entrada[arr_estados[estado]]);
+		}
+	}
+}
+combinaciones(obj_post_entrada.estados);
+alert("ejecutado");
+</script>
